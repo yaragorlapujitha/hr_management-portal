@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="text-center text-primary mb-4">{{ action }} Student</h2>
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow-lg p-4 bg-white rounded">
+                <form method="POST">
+                    {% csrf_token %}
+                {% if action == 'Add' %}
+                    <!-- Full Name -->
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="Enter full name"  value="{{ student.first_name }}" required>
+                    </div>
+                {% endif %}
+                    <!-- Qualification -->
+                    <div class="mb-3">
+                        <label class="form-label">Qualification</label>
+                        <input type="text" name="qualification" class="form-control" placeholder="e.g. B.Tech, MCA" value="{{ student.qualification }}"required>
+                    </div>
+
+                    <!-- Tech Stack -->
+                    <div class="mb-3">
+                        <label class="form-label">Tech Stack</label>
+                        <input type="text" name="tech_stack" class="form-control" placeholder="e.g. Python, Java, MERN"value="{{ student.tech_stack }}" required>
+                    </div>
+
+                    <!-- Year of Passing -->
+                    <div class="mb-3">
+                        <label class="form-label">Year of Passing</label>
+                        <input type="number" name="year_of_passing" class="form-control" min="2000" max="2035"value="{{ student.year_of_passing }}" required>
+                    </div>
+
+                    <!-- Mobile -->
+                    <div class="mb-3">
+                        <label class="form-label">Mobile</label>
+                        <input type="tel" name="mobile" class="form-control" placeholder="Enter mobile number"value="{{ student.mobile }}" required>
+                    </div>
+                {% if action == 'Add' %}
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Enter email address" value="{{ student.email }}"required>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Enter password" required>
+                    </div>
+
+                    <!-- Confirm Password -->
+                    <div class="mb-3">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" name="confirm_password" class="form-control" placeholder="Confirm password" required>
+                    </div>
+                {% endif %}
+                    {% if action == 'Add' %}
+                    <!-- Submit -->
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Register Student</button>
+                    </div>
+                    {% endif %}
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">update Student</button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
