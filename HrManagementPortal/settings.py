@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 from django.conf.global_settings import LOGIN_URL, LOGIN_REDIRECT_URL, AUTH_USER_MODEL
@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'hrmanagementportal',
         'USER': 'root',
-        'PASSWORD': 'Pujitha@123',
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '3306'
     }
